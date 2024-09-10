@@ -38,7 +38,7 @@ export default async function JobFilterSidebar({defaultValues}:JobFilterSidebarp
          locations.map(({location})=>location).filter(Boolean),
     ))as string[]
     return <aside className="md:w-[240px] top-0 sticky h-fit bg-background border rounded-lg">
-          <form action={filterJobs}>
+          <form action={filterJobs} key={JSON.stringify(defaultValues)}>
             <div className="space-y-4">
                 <div className='flex flex-col gap-2'>
                 <Label htmlFor='q'>Search</Label>
