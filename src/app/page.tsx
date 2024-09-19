@@ -8,12 +8,14 @@ import JobResults from "@/components/JobResult"
 import { Metadata } from 'next'
 interface PageProps{
   searchParams:{
-    q?:string,
+    q?:string, 
     type?:string,
     location?:string,
-    remote?:string
-  }
-}
+    remote?:string  
+    page?:string
+
+}}
+
 function getTitle({q,type,location,remote }:JobFilterValues){
   const titlePrefix = q
   ?`${q} jobs`
@@ -40,7 +42,7 @@ export function generateMetadata({
   
 }
 export default async function Home({
-  searchParams:{q,type,location,remote}
+  searchParams:{q,type,location,remote, page}
 }:PageProps) {
    const filterValues: JobFilterValues ={
     q,
@@ -60,7 +62,10 @@ export default async function Home({
       </div>
     <section className='flex flex-col md:flex-row gap-4'>
       <JobFilterSidebar defaultValues={filterValues}/>
-     <JobResults filterValues={filterValues}/>
+     <JobResults filterValues={filterValues}
+      page={page ? parseInt(page) : undefined}
+            
+      />
     </section>
     </main>
   )

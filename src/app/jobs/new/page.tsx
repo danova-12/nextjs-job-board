@@ -1,3 +1,4 @@
+import {Metadata} from "next";
 import NewJobForm from "./NewJobForm"
 export const metadata: Metadata = {
     title:"post a new job"
